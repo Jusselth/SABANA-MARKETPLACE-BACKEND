@@ -22,7 +22,7 @@ public class DataStore {
     public void initData() {
  
         Product p1 = new Product();
-        p1.setName("Cargador tipo C");
+        p1.setTitle("Cargador tipo C");
         p1.setPrice(36000.0);
         p1.setStock(2);
         p1.setCategory("Electrónica");

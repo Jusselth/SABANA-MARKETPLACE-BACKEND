@@ -1,9 +1,12 @@
 package com.unisabana.marketplace.marketplace.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,25 +27,23 @@ public class ProductController {
         this.dataStore = dataStore;
     }
 
+    // --- NUEVO MÉTODO: Para que PersonalInventory pueda ver los productos ---
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return dataStore.getProductList();
+    }
+
     @PostMapping
     public ResponseEntity<?> createProduct(@RequestBody Product product) {
-
-        if (product.getName() == null || product.getName().trim().isEmpty()) {
-            return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
+        // Ajustamos la validación a 'title'
+        if (product.getTitle() == null || product.getTitle().trim().isEmpty()) {
+            return new ResponseEntity<>("El título es obligatorio", HttpStatus.BAD_REQUEST);
         }
-        if (product.getPrice() == null || product.getPrice() <= 0) {
-            return new ResponseEntity<>("El precio debe ser mayor a 0", HttpStatus.BAD_REQUEST);
-        }
-        if (product.getStock() == null || product.getStock() < 0) {
-            return new ResponseEntity<>("El stock no puede ser negativo", HttpStatus.BAD_REQUEST);
-        }
-
-        if (product.getOwnerEmail() == null) {
-            product.setOwnerEmail("usuario.prueba@unisabana.edu.co");
-        }
+        
+        // El stock por defecto es 1 si no se envía
+        if (product.getStock() == null) product.setStock(1);
 
         dataStore.getProductList().add(product);
-        
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
