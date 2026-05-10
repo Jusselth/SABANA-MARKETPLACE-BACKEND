@@ -28,9 +28,19 @@ public class ProductController {
     }
 
     // --- NUEVO MÉTODO: Para que PersonalInventory pueda ver los productos ---
+    // 1. Para PublicShowcase: Devuelve TODO (lo de todos los usuarios)
     @GetMapping
     public List<Product> getAllProducts() {
         return dataStore.getProductList();
+    }
+
+    // 2. Para PersonalInventory: Devuelve solo lo del usuario logueado
+    // Se usa así: /api/v1/products/owner/usuario@unisabana.edu.co
+    @GetMapping("/owner/{email}")
+    public List<Product> getProductsByOwner(@PathVariable String email) {
+        return dataStore.getProductList().stream()
+                .filter(p -> p.getOwnerEmail() != null && p.getOwnerEmail().equalsIgnoreCase(email))
+                .toList();
     }
 
     @PostMapping
