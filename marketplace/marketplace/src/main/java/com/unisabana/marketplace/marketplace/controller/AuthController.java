@@ -1,12 +1,17 @@
 package com.unisabana.marketplace.marketplace.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.unisabana.marketplace.marketplace.model.User;
 import com.unisabana.marketplace.marketplace.service.AuthService;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5175") //  React pueda conectarse
+@CrossOrigin(origins = "https://sabana-marketpalce-frontend-buafcup44-juanmora-uxs-projects.vercel.app/home,http://localhost:5175") //  React pueda conectarse
 public class AuthController {
 
     private final AuthService authService;
