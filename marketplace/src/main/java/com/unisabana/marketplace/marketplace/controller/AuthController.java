@@ -11,7 +11,7 @@ import com.unisabana.marketplace.marketplace.service.AuthService;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@CrossOrigin(origins = {"*"})  //  React pueda conectarse
+@CrossOrigin(origins = {"https://sabanamarketplace-frontend.vercel.app"})  //  React pueda conectarse
 public class AuthController {
 
     private final AuthService authService;

@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MarketplaceApplication",
+            "request": "launch",
+            "mainClass": "com.unisabana.marketplace.marketplace.MarketplaceApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-MarketplaceApplication<marketplace>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

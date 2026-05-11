@@ -10,7 +10,7 @@ import com.unisabana.marketplace.marketplace.repository.DataStore;
 
 @RestController
 @RequestMapping("/api/v1/products")
-@CrossOrigin(origins = {"*"}) 
+@CrossOrigin(origins = {"https://sabanamarketplace-frontend.vercel.app"}) 
 public class ProductController {
 
     private final DataStore dataStore;
