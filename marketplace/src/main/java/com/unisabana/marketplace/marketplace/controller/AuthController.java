@@ -11,7 +11,7 @@ import com.unisabana.marketplace.marketplace.service.AuthService;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@CrossOrigin(origins = {"*", "http://localhost:5175"})  //  React pueda conectarse
+@CrossOrigin(origins = {"*"})  //  React pueda conectarse
 public class AuthController {
 
     private final AuthService authService;
