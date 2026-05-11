@@ -1,8 +1,13 @@
 package com.unisabana.marketplace.marketplace.model;
 
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-@Data
+@Data // Esto genera Getters y Setters automáticos con Lombok
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Product {
     private Long id;
     private String title; 
@@ -14,7 +19,4 @@ public class Product {
     private String imageUrl;  
     private String ownerEmail; 
 
-    public Product() {
-        // Eliminamos el UUID para que el id sea manejado por el idGenerator del DataStore
-    }
 }
