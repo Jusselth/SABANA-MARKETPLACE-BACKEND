@@ -1,20 +1,20 @@
 package com.unisabana.marketplace.marketplace.model;
 
-import java.util.UUID;
 import lombok.Data;
+
 @Data
 public class Product {
-    private String id;
-    private String title; // Cambiado de 'name' a 'title'
+    private Long id;
+    private String title; 
     private String description;
     private Double price;
     private Integer stock;
     private String category;
-    private String condition; // Agregado
-    private String imageUrl;  // Agregado
+    private String condition; 
+    private String imageUrl;  
     private String ownerEmail; 
 
     public Product() {
-        this.id = UUID.randomUUID().toString();
+        // Eliminamos el UUID para que el id sea manejado por el idGenerator del DataStore
     }
 }
