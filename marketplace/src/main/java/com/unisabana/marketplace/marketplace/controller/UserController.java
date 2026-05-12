@@ -12,7 +12,7 @@ import com.unisabana.marketplace.marketplace.repository.DataStore;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@CrossOrigin(origins = {"https://sabanamarketplace-frontend.vercel.app", "http://localhost:5175/"})
+@CrossOrigin(origins = {"https://sabana-marketplace-frontend.vercel.app", "http://localhost:5175/"})
 public class UserController {
 
     private final UserRegistry userRegistry;
