@@ -13,7 +13,7 @@ import com.unisabana.marketplace.marketplace.service.AuthService;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@CrossOrigin(origins = {"https://sabana-marketplace-frontend.vercel.app", "http://localhost:5175/"})
+@CrossOrigin(origins = {"https://sabanamarketplace-frontend.vercel.app", "http://localhost:5175/"})
 public class AuthController {
 
     private final AuthService authService;
