@@ -46,8 +46,12 @@ public class DataStore {
         p1.setPrice(36000.0);
         p1.setStock(1);
         p1.setCategory("Electrónica");
-        p1.setOwnerEmail("jusselth@unisabana.edu.co");
+        p1.setOwnerEmail("prueba@unisabana.edu.co");
         p1.setDescription("Cargador de carga rápida para dispositivos Android.");
         productList.add(p1);
+    }
+    public void deleteProductsByOwner(String email) {
+        // Removemos todos los productos cuyo ownerEmail coincida
+        productList.removeIf(p -> p.getOwnerEmail() != null && p.getOwnerEmail().equalsIgnoreCase(email));
     }
 }

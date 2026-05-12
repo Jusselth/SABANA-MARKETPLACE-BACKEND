@@ -14,27 +14,30 @@ public class AuthService {
     }
 
     public String register(User user) {
-        // Validación de seguridad: el email debe ser único en la memoria
         if (userRegistry.existsByEmail(user.getEmail())) {
             return "El usuario ya está registrado con ese correo.";
         }
         
-        // Asignamos un ID único y guardamos
         user.setId(UUID.randomUUID().toString());
+        
+        // Si el rol viene vacío, le ponemos USER por defecto
+        if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("USER");
+        }
+        
         userRegistry.save(user);
         return "Usuario registrado con éxito";
     }
-    public String login(String email, String password) {
+
+    //devuelve el objeto User
+    public User login(String email, String password) {
         User user = userRegistry.getUserByEmail(email);
     
-        if (user == null) {
-            return "Error: El usuario no existe.";
+        // Validamos que el usuario exista y que la contraseña sea igual
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
         }
     
-        if (!user.getPassword().equals(password)) {
-            return "Error: Contraseña incorrecta.";
-        }
-    
-        return "Login exitoso";
+        return null; // Si falla, devolvemos null
     }
 }
